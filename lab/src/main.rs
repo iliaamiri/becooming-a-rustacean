@@ -16,6 +16,7 @@ fn main() {
     fuckery();
 }
 
+
 fn fuckery() -> u32 {
     fn foolishnesss() {
 
@@ -31,12 +32,19 @@ fn fuckery() -> u32 {
         fn area(&self) -> u32 {
             self.height * self.width
         }
+        fn can_hold(&self, target: &Rectangle) -> bool {
+            self.area() > target.area()
+        }
     }
-
 
     let rect = Rectangle {
         width: 32,
         height: 100
+    };
+
+    let rect2 = Rectangle {
+        width: 10,
+        height: 90
     };
 
     println!("{}", rect.area());
@@ -44,6 +52,8 @@ fn fuckery() -> u32 {
     println!("rect is {:#?}", rect);
 
     dbg!(&rect);
+
+    println!("Can rect hold rect2? {}", rect.can_hold(&rect2));
 
     rect.width
 }
