@@ -16,14 +16,21 @@ fn main() {
     fuckery();
 }
 
-fn fuckery() -> i32 {
+fn fuckery() -> u32 {
     fn foolishnesss() {
 
     }
 
+    #[derive(Debug)]
     struct Rectangle {
-        width: i32,
-        height: i32,
+        width: u32,
+        height: u32,
+    }
+
+    impl Rectangle {
+        fn area(&self) -> u32 {
+            self.height * self.width
+        }
     }
 
 
@@ -32,11 +39,11 @@ fn fuckery() -> i32 {
         height: 100
     };
 
-    fn rectArea(rectangle: &Rectangle) -> i32 {
-        rectangle.width * rectangle.height
-    }
+    println!("{}", rect.area());
 
-    println!("{}", rectArea(&rect));
+    println!("rect is {:#?}", rect);
+
+    dbg!(&rect);
 
     rect.width
 }
