@@ -24,5 +24,14 @@ pub fn demo() {
     sorting::bubble_sort(&mut prices);
 
     println!("sorted prices: {:#?}", prices);
+
+
+    let mut sortable = vec![40, 20, 9, 1, 0];
+
+    let sortable_len = sortable.len();
+
+    sorting::quick_sort(&mut sortable, 0, sortable_len - 1);
+
+    println!("sortable is sorted by quick_sort: {:#?}", sortable);
 }
 
