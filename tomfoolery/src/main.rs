@@ -1,7 +1,9 @@
-pub mod router;
+mod router; 
 
 fn main() {
     println!("Hello, world!");
+
+    router::hello_from_router();
 
     let four = IpAddrKind::V4(String::from("127.0.0.1"));
     let six = IpAddrKind::V6(String::from("::1"));
@@ -9,11 +11,11 @@ fn main() {
     println!("{:#?}", four);
     println!("{:#?}", six);
 
-    let tomFoolery = Tom::Foolery { active: true };
-    let tomRod = Tom::Rod(String::from("A huge rod"));
-    tomRod.talk();
+    let tom_foolery = Tom::Foolery { active: true };
+    let tom_rod = Tom::Rod(String::from("A huge rod"));
+    tom_rod.talk();
 
-    tomFoolery.talk();
+    tom_foolery.talk();
 
     let something = Some(5);
 
@@ -27,35 +29,30 @@ fn main() {
         println!("yes");
     }
 
-    enum Test {
-        One,
-        Anabolic { x: i32, y: i32 },
-    }
-
     if let None = none {
         println!("bitch");
     }
 
-    let x = Test::Anabolic { x: 10, y: 39 };
+    let _x = Test::Anabolic { x: 10, y: 39 };
 
-    match &tomRod {
+    match &tom_rod {
         Tom::Genius => {
             println!("Tom is a genius");
-            tomRod
+            tom_rod
         },
         Tom::Rod(t) => {
             println!("t is: {}", t);
-            tomRod
+            tom_rod
         },
         Tom::Foolery { active } => {
             println!("Tom is very active? {}", active);
-            tomRod
+            tom_rod
         },
         Tom::Loom(l1, l2) => {
             println!("Loom: {:#?}", (l1, l2));
-            tomRod
+            tom_rod
         }
-        _ => tomRod
+        _ => tom_rod
     };
 }
 
@@ -81,7 +78,7 @@ impl Tom {
     }
 }
 
-
-
-
-
+#[warn(dead_code)]
+enum Test {
+    Anabolic { x: i32, y: i32 },
+}

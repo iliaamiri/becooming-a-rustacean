@@ -1,7 +1,3 @@
-mod router {
-
-    pub fn hello_from_router() {
-        println!("hollaa");
-    }
-
+pub fn hello_from_router() {
+    println!("hollaa");
 }

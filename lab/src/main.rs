@@ -1,5 +1,12 @@
+mod fucktion;
+mod restaurant;
+use restaurant::kitchen::prep_area;
+
 fn main() {
     println!("Welcome to my application!");
+
+    fucktion::fucktion();
+    prep_area::prepare_dish();
 
     let name = String::from("ilia");
 
@@ -18,10 +25,6 @@ fn main() {
 
 
 fn fuckery() -> u32 {
-    fn foolishnesss() {
-
-    }
-
     #[derive(Debug)]
     struct Rectangle {
         width: u32,
