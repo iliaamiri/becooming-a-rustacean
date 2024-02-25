@@ -1,6 +1,10 @@
 use std::collections::HashMap;
 
 pub fn demo() {
+    packing_order_calc();
+}
+
+fn packing_order_calc() -> () {
     let reusability = HashMap::<&str, u32>::from(
         [
         ("Phone charger", 0),
