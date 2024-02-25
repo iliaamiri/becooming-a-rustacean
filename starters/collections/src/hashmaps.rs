@@ -4,6 +4,18 @@ pub fn demo() {
     packing_order_calc();
 }
 
+pub fn more_hash_maps() {
+    let scores = HashMap::from([
+                               ("Blue".to_string(), 420),
+                               ("Red".into(), 69) 
+    ]);
+
+    let blue_score = scores.get(&"Blue".to_string()).copied().unwrap_or(0);
+
+    println!("Blue scored {}", blue_score);
+}
+
+
 fn packing_order_calc() -> () {
     let reusability = HashMap::<&str, u32>::from(
         [

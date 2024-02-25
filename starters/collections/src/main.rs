@@ -12,4 +12,9 @@ fn main() {
     println!("---");
 
     strings_i_guess::demo();
+
+    println!("---");
+
+    hashmaps::more_hash_maps();
+
 }
