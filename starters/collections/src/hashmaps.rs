@@ -5,7 +5,7 @@ pub fn demo() {
 }
 
 pub fn more_hash_maps() {
-    let scores = HashMap::from([
+    let mut scores = HashMap::from([
                                ("Blue".to_string(), 420),
                                ("Red".into(), 69) 
     ]);
@@ -13,6 +13,42 @@ pub fn more_hash_maps() {
     let blue_score = scores.get(&"Blue".to_string()).copied().unwrap_or(0);
 
     println!("Blue scored {}", blue_score);
+
+    let red_score = scores.get("Red").copied().unwrap_or(0);
+
+    println!("Red scored {red_score}");
+
+    for (key, item) in &scores {
+        println!("{key}: {item}");
+    }
+
+    let _ = scores.entry("Yellow".to_string()).or_insert(0);
+    let _ = scores.entry("Purple".to_string()).or_insert_with(|| blue_score * 2);
+    let _ = scores.entry("Pink".to_string()).or_insert_with_key(|key| key.len());
+
+    let teal_score = scores.entry("Teal".to_string()).or_insert(2);
+    *teal_score += 2;
+
+    scores.insert("Black".to_string(), 3);
+    let _ = scores.entry("Black".to_string()).and_modify(|score| {
+        if *score % 2 == 0 {
+            *score = 6969
+        } else {
+            *score = 420420
+        }
+    }).or_insert(0);
+
+    let _ = scores.entry("White".to_string()).or_insert(4);
+    let white = scores.get("White").copied().unwrap_or(0);
+
+    let removed_entry = scores.remove_entry("White");
+
+    println!("{}", white);
+
+    println!("{:#?}", scores);
+
+    let (key, value) = removed_entry.unwrap_or(("Unnamed".to_string(), 0));
+    println!("{key} - {value}");
 }
 
 
