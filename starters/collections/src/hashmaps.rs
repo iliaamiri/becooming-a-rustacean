@@ -1,10 +1,45 @@
 use std::collections::HashMap;
 
+pub mod examples;
+
 pub fn demo() {
     packing_order_calc();
 }
 
 pub fn more_hash_maps() {
+    let mut vector = vec![3, 90, -12, 4, 0, 2, 6, 39];
+
+    let median = examples::median(&mut vector);
+
+    println!("{vector:?} has median of {median}");
+    println!("{}", {
+        let mut vector = vec![];
+        let median = examples::median(&mut vector);
+
+        format!("{vector:?} has median of {median}")
+    });
+    println!("{}", {
+        let mut vector = vec![4];
+        let median = examples::median(&mut vector);
+
+        format!("{vector:?} has median of {median}")
+    });
+    println!("{}", {
+        let mut vector = vec![3, 4];
+        let median = examples::median(&mut vector);
+
+        format!("{vector:?} has median of {median}")
+    });
+    println!("{}", {
+        let mut vector = vec![3, 4, 10, 0, 2];
+        let median = examples::median(&mut vector);
+
+        format!("{vector:?} has median of {median}")
+    });
+}
+
+#[allow(dead_code)]
+fn last_fuckery() {
     let mut scores = HashMap::from([
                                ("Blue".to_string(), 420),
                                ("Red".into(), 69) 
@@ -50,7 +85,6 @@ pub fn more_hash_maps() {
     let (key, value) = removed_entry.unwrap_or(("Unnamed".to_string(), 0));
     println!("{key} - {value}");
 }
-
 
 fn packing_order_calc() -> () {
     let reusability = HashMap::<&str, u32>::from(
