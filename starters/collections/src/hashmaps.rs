@@ -36,6 +36,35 @@ pub fn more_hash_maps() {
 
         format!("{vector:?} has median of {median}")
     });
+
+    println!("---");
+
+    println!("{}", {
+        let mut string = "apple".to_string();
+
+        let old_string = string.clone();
+        format!("{} in pig latin is {}", old_string, {
+            examples::to_pig_latin(&mut string)
+        })
+    });
+    println!("{}", {
+        let mut string = "first".to_string();
+
+        let old_string = string.clone();
+        format!("{} in pig latin is {}", old_string, {
+            examples::to_pig_latin(&mut string)
+        })
+    });
+    println!("{}", {
+        let mut string = "".to_string();
+
+        let old_string = string.clone();
+        format!("{} in pig latin is {}", old_string, {
+            examples::to_pig_latin(&mut string)
+        })
+    });
+
+    examples::department_api();
 }
 
 #[allow(dead_code)]
