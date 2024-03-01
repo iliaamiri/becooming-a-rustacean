@@ -1,4 +1,4 @@
-use std::{collections::HashMap, io::{self, Read}, ops::{Index, IndexMut}};
+use std::{collections::HashMap, io::{self}};
 
 
 pub fn median(vector: &mut Vec<i32>) -> f32 {
