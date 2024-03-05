@@ -1,8 +1,25 @@
 mod fucktion;
 mod restaurant;
+use std::{fs::File, io::Read};
+
 use restaurant::kitchen::prep_area;
 
 fn main() {
+    let file = File::open("test.txt");
+    if file.is_err() {
+        let err = file.unwrap_err();
+        println!("can't open this file. {}", err);
+    } else {
+        let mut file = file.unwrap();
+        let mut buffer = [0; 10];
+        let stuff = file.read(&mut buffer[..]);
+
+        let mut buffer = String::new();
+        let stuff = file.read_to_string(&mut buffer);
+
+        println!("content of the file: {:#?}", stuff);
+    }
+
     println!("Welcome to my application!");
 
     fucktion::fucktion();
