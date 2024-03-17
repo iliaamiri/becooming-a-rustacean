@@ -1,5 +1,5 @@
 use rand::Rng;
-use std::cmp::Ordering;
+use std::{cmp::Ordering, fmt::Display, io};
 
 fn main() {
     println!("Welcome to the Guessing Game!");
@@ -17,8 +17,7 @@ fn main() {
             .read_line(&mut guess)
             .expect("Failed to read line");
 
-        let guess = guess.trim();
-        let guess: u32 = match guess.parse() {
+        let guess: i32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(_) => {
                 if guess == "quit" {
@@ -27,10 +26,11 @@ fn main() {
                 continue;
             }
         };
+        let guess = Guess::new(guess);
 
         println!("You guessed: {guess}");
 
-        match guess.cmp(&secret_number) {
+        match guess.value.cmp(&secret_number) {
             Ordering::Less => println!("Too small!"),
             Ordering::Greater => println!("Too big!"),
             Ordering::Equal => {
@@ -38,5 +38,31 @@ fn main() {
                 break;
             },
         }
+    }
+}
+
+struct Guess {
+    value: i32,
+}
+
+impl Guess {
+    fn new(value: i32) -> Guess {
+        if value < 1 || value > 100 {
+            panic!("Your guess must be between 1 and 100");
+        }
+
+        Guess {
+            value,
+        }
+    }
+
+    fn value(&self) -> i32 {
+        self.value
+    }
+}
+
+impl Display for Guess {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.value)
     }
 }
