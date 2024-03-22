@@ -1,0 +1,55 @@
+pub fn demo() {
+    let tweet = Tweet {
+        username: "something".to_string(),
+        content: "content".to_string(),
+        reply: "reply".to_string(),
+        retweet: todo!(),
+    };
+}
+
+struct NewsArticle {
+    headline: String,
+    location: String,
+    author: String,
+    content: String,
+}
+
+struct Tweet {
+    username: String,
+    content: String,
+    reply: bool,
+    retweet: bool,
+}
+
+trait Summary {
+    fn summary(self) -> String;
+
+    fn test() -> () {
+        println!("hello");
+    }
+}
+
+trait Author {
+    fn author(self) -> String;
+    fn authored_at(self) -> u64;
+}
+
+impl Summary for Tweet {
+    fn summary(self) -> String {
+        let mut action = "tweeted";
+        if self.reply {
+            action = "replied";
+        }
+        if self.retweet {
+            action = "retweeted";
+        }
+
+        format!("{} {} something", self.username, action)
+    }
+}
+
+impl Summary for NewsArticle {
+    fn summary(self) -> String {
+        
+    }
+}
